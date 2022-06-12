@@ -5,7 +5,9 @@ import (
 	"sort"
 )
 
-//Original Solution
+// Original Solution
+// Runtime: 54 ms
+// Memory Usage: 10.5 MB
 func suggestedProducts(products []string, searchWord string) [][]string {
 	outputArray := [][]string{}
 	var searchString = ""
