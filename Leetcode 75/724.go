@@ -2,31 +2,30 @@ package main
 
 import "fmt"
 
-func Sum(n []int) int {
-	s := 0
-	for _, v := range n {
-		s += v
-	}
-	return s
-}
+func pivotindex(nums []int) int {
 
-func pivotIndex(nums []int) int {
-	rightSum := Sum(nums)
-	leftSum := 0
+	pivotSum := 0
 
-	for i, v := range nums {
-		rightSum = rightSum - v
-		if leftSum == rightSum {
+	for i := 0; i < len(nums); i++ {
+		if i != 0 {
+			pivotSum += nums[i-1]
+		}
+		rightSum := 0
+		for j := i + 1; j < len(nums); j++ {
+			rightSum += nums[j]
+		}
+		fmt.Println(pivotSum, rightSum)
+
+		if pivotSum == rightSum {
 			return i
 		}
-		leftSum += v
 	}
-
 	return -1
+
 }
 
 func main() {
 	nums := []int{2, 1, -1}
-	fmt.Print(pivotIndex(nums))
+	fmt.Print(pivotindex(nums))
 
 }
